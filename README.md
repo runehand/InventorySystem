@@ -1,112 +1,117 @@
 # Inventory Management System
 
-This project is an Inventory Management System designed to manage IT assets. It includes features such as inventory tracking, user management, reports and analytics, asset management, maintenance schedules, and device status reporting.
+Inventory Management System is a full-stack application for managing IT assets, users, reports, and maintenance workflows. The repository contains the ASP.NET Core backend, the Angular frontend, and supporting class library projects used by the solution.
+
+## Overview
+
+This system is designed to help teams track inventory status, manage asset lifecycles, and monitor maintenance activity from a single application.
 
 ## Features
 
-- **Inventory Tracking**: Keep track of all IT assets, including their current status (available or faulty).
-- **User Management**: Manage user roles and permissions.
-- **Reports and Analytics**: Generate reports and analyze data related to IT assets.
-- **Asset Management**: Manage the lifecycle of IT assets from procurement to disposal.
-- **Maintenance Schedules**: Track maintenance schedules and service history for each asset.
-- **Device Status Reporting**: Report on the status of devices, including available and faulty devices.
+- Inventory tracking for available and faulty assets
+- User management and role-based access support
+- Asset lifecycle management from procurement to disposal
+- Reports and analytics for operational visibility
+- Maintenance scheduling and service history tracking
+- Device status reporting
 
 ## Technology Stack
 
-- **Backend**: ASP.NET Core
-- **Frontend**: Angular
-- **Database**: SQL Server
+- Backend: ASP.NET Core
+- Frontend: Angular
+- Database: SQL Server
 
 ## Prerequisites
+
+Before running the project, make sure the following are installed:
 
 - .NET SDK 8.0 or higher
 - Node.js 20.0 or higher
 - Angular CLI 18.0 or higher
 - SQL Server
 
+## Repository Structure
+
+- `InventrySystem/` - main backend application
+- `InventryUI/` - Angular frontend application
+- `Contracts/`, `Entities/`, `Repository/`, `Shared/`, `LoggerService/`, `EmailService/` - supporting projects and libraries
+
 ## Getting Started
 
-### Backend (ASP.NET API)
+### 1. Clone the Repository
 
-1. **Clone the Repository**
+```sh
+git clone https://github.com/runehand/InventorySystem.git
+cd InventorySystem
+```
 
-    ```sh
-    git clone https://github.com/runehand/InventorySystem.git
-    cd InventorySystem
-    ```
+### 2. Configure the Database
 
-2. **Setup Database**
+Update the connection string in `appsettings.json` to match your SQL Server instance:
 
-    Ensure SQL Server is running and update the connection string in `appsettings.json` to match your database configuration.
+```json
+"ConnectionStrings": {
+  "sqlConnection": "server=.; database=InventrySystemDb; Integrated Security=true; TrustServerCertificate=true"
+}
+```
 
-    ```json
-    "ConnectionStrings": {
-   "sqlConnection": "server=.; database=InventrySystemDb; Integrated Security=true; TrustServerCertificate=true"
-    }
-    ```
+### 3. Run Database Migrations
 
-3. **Run Migrations**
+The application uses Entity Framework Core Code First migrations.
 
-The application uses the Code First approach of Entity Framework Core. 
-1. Open the **Package Manager Console** in Visual Studio.
-2. Set **InventrySystem** as the default project.
-3. Run the following command to update the database:
+1. Open the solution in Visual Studio.
+2. Set `InventrySystem` as the default project in the Package Manager Console.
+3. Run:
 
-    ```powershell
-    Update-Database
-    ```
+```powershell
+Update-Database
+```
 
-4. **Run the API**
+### 4. Run the Backend API
 
-    The API will be available at `https://localhost:5001/swagger/index.html`.
+Start the ASP.NET Core application. The API will be available at:
 
-### Frontend (Angular App)
+```text
+https://localhost:5001/swagger/index.html
+```
 
-1. **Navigate to Frontend Directory**
+### 5. Run the Frontend
 
-    ```sh
-    cd InventrySystem/InventryUI
-    ```
+From the frontend directory:
 
-2. **Install Dependencies**
+```sh
+cd InventrySystem/InventryUI
+npm install
+ng serve
+```
 
-    Install the necessary npm packages:
+The Angular app will be available at:
 
-    ```sh
-    npm install
-    ```
+```text
+http://localhost:4200
+```
 
-3. **Update Environment Configuration**
+## Frontend Configuration
 
-    Update the API endpoint in `src/environments/environment.ts` to match the URL where your backend API is running:
+If needed, update the API endpoint in `src/environments/environment.ts`:
 
-    ```typescript
-    export const environment = {
-      production: false,
-      apiUrl: 'https://localhost:5001'
-    };
-    ```
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'https://localhost:5001'
+};
+```
 
-4. **Run the Angular App**
+## Default Login
 
-    Use the following command to start the Angular development server:
+The application includes a default administrator account for local testing.
 
-    ```sh
-    ng serve
-    ```
-
-    The Angular app will be available at `http://localhost:4200`.
-
-## Login
-
-LOGIN WITH USERNAME OR EMAIL ADDRESS
-> * **Default Administrator Account**
->   * Email:    user@example.com
->   * Password: Password.123
+- Username or email: `user@example.com`
+- Password: `Password.123`
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request for any improvements.
+Contributions are welcome. If you plan to make changes, please fork the repository and submit a pull request.
 
 ## License
 
